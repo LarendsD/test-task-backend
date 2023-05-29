@@ -3,6 +3,6 @@ import { BooleanFilter } from "../filters/boolean/types/boolean-filter.type";
 import { DateFilter } from "../filters/date/types/date-filter.type";
 import { NumberFilter } from "../filters/number/types/number-filter.type";
 import { OrFilter } from "../filters/or/types/or-filter.type";
-import { StringFilterType } from "../filters/string/types/string-filter.type";
+import { StringFilter } from "../filters/string/types/string-filter.type";
 
-export type Filter = StringFilterType | NumberFilter | BooleanFilter | DateFilter | OrFilter | AndFilter;
+export type Filter = StringFilter | NumberFilter | BooleanFilter | DateFilter | OrFilter | AndFilter;

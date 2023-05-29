@@ -1,22 +1,27 @@
+import { andFilter } from "./filters/and/and-filter";
+import { booleanFilter } from "./filters/boolean/boolean-filter";
+import { dateFilter } from "./filters/date/date-filter";
+import { numberFilter } from "./filters/number/number-filter";
+import { orFilter } from "./filters/or/or-filter";
 import { stringFilter } from "./filters/string/string-filter";
 import { Filter } from "./types/filter.type";
 import { Message } from "./types/message.type";
 
-export const filterMessages = (messages: Message[], filter: Filter) => {
+export const filterMessages = (messages: Message[], filter: Filter): Message[] => {
   switch (filter.type) {
     case 'string':
       return stringFilter(messages, filter);
     case 'boolean':
-      // there will be boolean filter function;
+      return booleanFilter(messages, filter);
     case 'number':
-      // there will be number filter function;
+      return numberFilter(messages, filter);
     case 'date':
-      // there will be date filter function;
+      return dateFilter(messages, filter);
     case 'and':
-      // there will be and filter function;
+      return andFilter(messages, filter);
     case 'or':
-      // there will be or filter function
+      return orFilter(messages, filter);
     default:
-      throw new Error(`Type ${filter.type} is not supported!`);
+      throw new Error(`Filter type is not supported!`);
   }
 }

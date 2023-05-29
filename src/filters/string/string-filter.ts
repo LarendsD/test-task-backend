@@ -1,17 +1,14 @@
 import { Message } from "../../types/message.type";
-import { StringFilterType } from "./types/string-filter.type";
+import { StringFilter } from "./types/string-filter.type";
 
-export const stringFilter = (messages: Message[], filter: StringFilterType) => {
-  const { value, operation, field, type } = filter
+export const stringFilter = (messages: Message[], filter: StringFilter) => {
+  const { value, operation, field } = filter
 
   return messages.filter((message) => {
     const fieldValue = message[field];
-    if (!fieldValue) {
-      return false;
-    }
 
     if (typeof fieldValue !== 'string') {
-      throw new Error(`Somehow ${fieldValue} was called in string filter, when it's ${type}`);
+      return false
     }
 
     switch (operation) {
